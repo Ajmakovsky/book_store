@@ -3,13 +3,16 @@ require_relative 'lib/book_repository'
 
 DatabaseConnection.connect('book_store')
 
-sql = 'SELECT id, title, author_name FROM books'
+#sql = 'SELECT id, title, author_name FROM books'
 
 # fill in params above
 
-result = DatabaseConnection.exec_params(sql, [])
+#result = DatabaseConnection.exec_params(sql, [])
 
-result.each do |record|
+books = BookRepository.new
 
-  puts "#{record['id']} - #{record['title']} - #{record['author_name']}"
+books.all.each do |record|
+
+  puts "#{record.id} - #{record.title} - #{record.author_name}"
 end 
+
